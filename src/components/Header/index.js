@@ -1,26 +1,26 @@
-import Arrow from 'assets/icons/Arrow'
-import Logo from 'assets/icons/Logo'
-import Upload from 'components/Upload'
-import { Consumer } from 'lib/context'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { State, withStatechart } from 'react-automata'
-import Gravatar from 'react-gravatar'
-import { Link } from 'react-router-dom'
-import * as styles from './styles'
+import Arrow from "assets/icons/Arrow"
+import Logo from "assets/icons/Logo"
+import Upload from "components/Upload"
+import { Consumer } from "lib/context"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { State, withStatechart } from "react-automata"
+import Gravatar from "react-gravatar"
+import { Link } from "react-router-dom"
+import * as styles from "./styles"
 
 export const statechart = {
-  initial: 'closed',
+  initial: "closed",
   states: {
     closed: {
       on: {
-        TOGGLE_MENU: 'open',
+        TOGGLE_MENU: "open",
       },
     },
     open: {
       on: {
-        TOGGLE_MENU: 'closed',
-        CLOSE_MENU: 'closed',
+        TOGGLE_MENU: "closed",
+        CLOSE_MENU: "closed",
       },
     },
   },
@@ -28,11 +28,11 @@ export const statechart = {
 
 export class HeaderComponent extends Component {
   componentDidMount = () => {
-    document.addEventListener('click', this.handleClickOutside)
+    document.addEventListener("click", this.handleClickOutside)
   }
 
   componentWillUnmount = () => {
-    document.removeEventListener('click', this.handleClickOutside)
+    document.removeEventListener("click", this.handleClickOutside)
   }
 
   setWrapperRef = (node) => {
@@ -41,11 +41,11 @@ export class HeaderComponent extends Component {
 
   handleClickOutside = (event) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.props.transition('CLOSE_MENU')
+      this.props.transition("CLOSE_MENU")
     }
   }
 
-  closeMenu = () => this.props.transition('CLOSE_MENU')
+  closeMenu = () => this.props.transition("CLOSE_MENU")
 
   renderSubmenu = (user, logout) => (
     <ul className={styles.subMenu}>
@@ -73,7 +73,7 @@ export class HeaderComponent extends Component {
   render() {
     const menuState = this.props.machineState
       ? this.props.machineState.value
-      : 'closed'
+      : "closed"
 
     return (
       <Consumer>
@@ -95,7 +95,7 @@ export class HeaderComponent extends Component {
                   <button
                     className={`bw0 flex items-center pa3 ${menuState}`}
                     type="button"
-                    onClick={() => this.props.transition('TOGGLE_MENU')}
+                    onClick={() => this.props.transition("TOGGLE_MENU")}
                   >
                     <Gravatar
                       email={user.email}

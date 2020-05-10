@@ -1,7 +1,7 @@
-import Hearts from 'components/Hearts'
-import PropTypes from 'prop-types'
-import React from 'react'
-import * as styles from './styles'
+import Hearts from "components/Hearts"
+import PropTypes from "prop-types"
+import React from "react"
+import * as styles from "./styles"
 
 const PhotoModal = (props) => (
   <div className="fixed w-100 top-0 left-0 bottom-0 bg-black-80 center overflow-auto db">
@@ -23,7 +23,7 @@ const PhotoModal = (props) => (
     <button
       type="button"
       className={`${styles.closeBtn} fixed top-1 right-1 white f1 fw1`}
-      onClick={() => props.transition('EXIT_PHOTO')}
+      onClick={() => props.transition("EXIT_PHOTO")}
     >
       &times;
     </button>

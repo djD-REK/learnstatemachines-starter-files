@@ -1,29 +1,29 @@
-import PhotoCard from 'components/PhotoCard'
-import PhotoModal from 'components/PhotoModal'
-import firebase from 'firebase/app'
-import 'firebase/database'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { State, withStatechart } from 'react-automata'
-import * as styles from './styles'
+import PhotoCard from "components/PhotoCard"
+import PhotoModal from "components/PhotoModal"
+import firebase from "firebase/app"
+import "firebase/database"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { State, withStatechart } from "react-automata"
+import * as styles from "./styles"
 
 export const statechart = {
-  initial: 'loading',
+  initial: "loading",
   states: {
     gallery: {
       on: {
-        SELECT_PHOTO: 'photo',
+        SELECT_PHOTO: "photo",
       },
     },
     photo: {
       on: {
-        EXIT_PHOTO: 'gallery',
+        EXIT_PHOTO: "gallery",
       },
     },
     loading: {
-      onEntry: ['fetch'],
+      onEntry: ["fetch"],
       on: {
-        SUCCESS: 'gallery',
+        SUCCESS: "gallery",
       },
     },
   },
@@ -33,11 +33,11 @@ export class ProfileComponent extends Component {
   fetch = () => {
     firebase
       .database()
-      .ref('/posts')
-      .orderByChild('username')
+      .ref("/posts")
+      .orderByChild("username")
       .equalTo(this.props.match.params.username)
-      .on('value', (snapshot) =>
-        this.props.transition('SUCCESS', { posts: snapshot.val() }),
+      .on("value", (snapshot) =>
+        this.props.transition("SUCCESS", { posts: snapshot.val() }),
       )
   }
 

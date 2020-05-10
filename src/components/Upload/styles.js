@@ -1,4 +1,4 @@
-import { css } from 'emotion'
+import { css } from "emotion"
 
 export const background = css`
   background-color: #398df0;

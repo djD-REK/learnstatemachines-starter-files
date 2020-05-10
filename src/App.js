@@ -1,46 +1,46 @@
-import Header from 'components/Header'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import { Provider } from 'lib/context'
-import PrivateRoute from 'lib/routing'
-import Auth from 'pages/Auth'
-import Feed from 'pages/Feed'
-import Profile from 'pages/Profile'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { withStatechart } from 'react-automata'
-import { Route, Switch } from 'react-router-dom'
-import { body } from './styles'
+import Header from "components/Header"
+import firebase from "firebase/app"
+import "firebase/auth"
+import { Provider } from "lib/context"
+import PrivateRoute from "lib/routing"
+import Auth from "pages/Auth"
+import Feed from "pages/Feed"
+import Profile from "pages/Profile"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { withStatechart } from "react-automata"
+import { Route, Switch } from "react-router-dom"
+import { body } from "./styles"
 
 export const statechart = {
-  initial: 'idle',
+  initial: "idle",
   states: {
     idle: {
       on: {
-        SUCCESS: 'loggedIn',
-        FAIL: 'loggedOut',
+        SUCCESS: "loggedIn",
+        FAIL: "loggedOut",
       },
     },
     loggedIn: {
       on: {
-        LOGOUT: 'loggedOut',
+        LOGOUT: "loggedOut",
       },
     },
     loggedOut: {
       on: {
-        LOGIN: 'loading',
+        LOGIN: "loading",
       },
     },
     error: {
-      onEntry: ['enterError'],
+      onEntry: ["enterError"],
       on: {
-        TRY_AGAIN: 'loading',
+        TRY_AGAIN: "loading",
       },
     },
     loading: {
       on: {
-        SUCCESS: 'loggedIn',
-        FAIL: 'error',
+        SUCCESS: "loggedIn",
+        FAIL: "error",
       },
     },
   },
@@ -55,9 +55,9 @@ export class AppComponent extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        return this.props.transition('SUCCESS', { authenticated: true, user })
+        return this.props.transition("SUCCESS", { authenticated: true, user })
       }
-      return this.props.transition('FAIL', { authenticated: false })
+      return this.props.transition("FAIL", { authenticated: false })
     })
   }
 
@@ -66,18 +66,18 @@ export class AppComponent extends Component {
     return firebase
       .auth()
       .signOut()
-      .then(() => this.props.transition('LOGOUT', { authenticated: false }))
+      .then(() => this.props.transition("LOGOUT", { authenticated: false }))
   }
 
   render() {
     const { machineState, user, authenticated } = this.props
 
-    if (machineState.value === 'idle') return <div />
+    if (machineState.value === "idle") return <div />
 
     return (
       <Provider value={{ ...this.state, user, authenticated }}>
         {authenticated ? <Header /> : false}
-        <div className={authenticated ? body : ''}>
+        <div className={authenticated ? body : ""}>
           <Switch>
             <Route path="/login" component={Auth} />
             <Route path="/register" component={Auth} />

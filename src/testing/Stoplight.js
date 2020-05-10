@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import { State, withStatechart } from 'react-automata'
+import PropTypes from "prop-types"
+import React from "react"
+import { State, withStatechart } from "react-automata"
 
 export const statechart = {
-  initial: 'red',
+  initial: "red",
   states: {
     green: {
       on: {
-        TIMER: 'yellow',
+        TIMER: "yellow",
       },
     },
     yellow: {
       on: {
-        TIMER: 'red',
+        TIMER: "red",
       },
     },
     red: {
       on: {
-        TIMER: 'green',
+        TIMER: "green",
       },
     },
   },
@@ -25,7 +25,7 @@ export const statechart = {
 
 export class StoplightComponent extends React.Component {
   handleClick = () => {
-    this.props.transition('TIMER')
+    this.props.transition("TIMER")
   }
 
   render() {

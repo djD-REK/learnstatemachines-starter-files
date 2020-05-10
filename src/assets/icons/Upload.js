@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from "prop-types"
+import React from "react"
 
 const UploadIcon = (props) => {
-  const cssClass = props.cssClass ? `${props.cssClass} icon` : 'icon'
+  const cssClass = props.cssClass ? `${props.cssClass} icon` : "icon"
 
   return (
     <svg

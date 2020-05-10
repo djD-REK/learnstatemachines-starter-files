@@ -1,26 +1,26 @@
-import HeartIcon from 'assets/icons/Heart'
-import firebase from 'firebase/app'
-import 'firebase/database'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { withStatechart } from 'react-automata'
-import * as styles from './styles'
+import HeartIcon from "assets/icons/Heart"
+import firebase from "firebase/app"
+import "firebase/database"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { withStatechart } from "react-automata"
+import * as styles from "./styles"
 
 export const statechart = {
-  initial: 'loading',
+  initial: "loading",
   states: {
     loading: {
-      onEntry: ['fetch'],
+      onEntry: ["fetch"],
       on: {
-        HEARTED: 'hearted',
-        UNHEARTED: 'unhearted',
+        HEARTED: "hearted",
+        UNHEARTED: "unhearted",
       },
     },
     hearted: {
       on: {
         TOGGLE: {
           unhearted: {
-            actions: ['toggleHeart'],
+            actions: ["toggleHeart"],
           },
         },
       },
@@ -29,7 +29,7 @@ export const statechart = {
       on: {
         TOGGLE: {
           hearted: {
-            actions: ['toggleHeart'],
+            actions: ["toggleHeart"],
           },
         },
       },
@@ -48,13 +48,13 @@ export class HeartsComponent extends Component {
     firebase
       .database()
       .ref(`/posts/${this.props.id}/hearts`)
-      .once('value')
+      .once("value")
       .then((snapshot) => {
         if (snapshot.hasChild(user)) {
-          return this.props.transition('HEARTED')
+          return this.props.transition("HEARTED")
         }
 
-        return this.props.transition('UNHEARTED')
+        return this.props.transition("UNHEARTED")
       })
   }
 
@@ -64,12 +64,12 @@ export class HeartsComponent extends Component {
     const user = firebase.auth().currentUser.uid
     const ref = firebase.database().ref(`/posts/${this.props.id}/hearts`)
 
-    if (machineState.value === 'hearted') {
+    if (machineState.value === "hearted") {
       this.setState({ heartCount: heartCount + 1 })
       return ref.child(user).set(true)
     }
 
-    if (machineState.value === 'unhearted') {
+    if (machineState.value === "unhearted") {
       this.setState({ heartCount: heartCount - 1 })
       return ref.child(user).remove()
     }
@@ -79,14 +79,14 @@ export class HeartsComponent extends Component {
 
   render() {
     const { machineState } = this.props
-    const color = machineState.value === 'hearted' ? '#EA4C89' : '#b3b3b3'
+    const color = machineState.value === "hearted" ? "#EA4C89" : "#b3b3b3"
 
     return (
       <button
         className={`${this.props.className} ${styles.button} ${machineState.value}`}
         style={{ color }}
         type="button"
-        onClick={() => this.props.transition('TOGGLE')}
+        onClick={() => this.props.transition("TOGGLE")}
       >
         <HeartIcon cssClass="mr1" color={color} />
         <span className="db">{this.state.heartCount}</span>

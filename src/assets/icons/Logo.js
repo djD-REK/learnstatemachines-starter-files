@@ -1,7 +1,7 @@
-import { css } from 'emotion'
-import PropTypes from 'prop-types'
-import React from 'react'
-import CameraIcon from './Camera'
+import { css } from "emotion"
+import PropTypes from "prop-types"
+import React from "react"
+import CameraIcon from "./Camera"
 
 const logo = css`
   height: 28px;
@@ -13,7 +13,7 @@ const logoText = css`
 `
 
 const Logo = (props) => {
-  const color = props.color || '#333'
+  const color = props.color || "#333"
 
   return (
     <span className="w-100 flex items-center" style={{ color }}>

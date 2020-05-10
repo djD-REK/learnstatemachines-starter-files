@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Gravatar from 'react-gravatar'
-import * as styles from './styles'
+import PropTypes from "prop-types"
+import React from "react"
+import Gravatar from "react-gravatar"
+import * as styles from "./styles"
 
 const Byline = (props) => (
   <div className={props.className}>

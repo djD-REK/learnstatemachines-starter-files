@@ -1,11 +1,11 @@
-import Byline from 'components/Byline'
-import Hearts from 'components/Hearts'
-import firebase from 'firebase/app'
-import 'firebase/storage'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import * as styles from './styles'
+import Byline from "components/Byline"
+import Hearts from "components/Hearts"
+import firebase from "firebase/app"
+import "firebase/storage"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import * as styles from "./styles"
 
 export default class Photo extends Component {
   state = {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": "https://github.com/djD-REK/learnstatemachines-starter-files.git",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development --inline",
     "build": "webpack --config ./webpack.config.js --mode production",
@@ -34,7 +35,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.22.0",
-    "eslint": "^5.0.1",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "17.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",

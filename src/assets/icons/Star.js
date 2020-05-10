@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from "prop-types"
+import React from "react"
 
 const StarIcon = (props) => {
-  const color = props.color ? props.color : '#000'
-  const cssClass = props.cssClass ? `${props.cssClass} icon` : 'icon'
+  const color = props.color ? props.color : "#000"
+  const cssClass = props.cssClass ? `${props.cssClass} icon` : "icon"
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={cssClass}>

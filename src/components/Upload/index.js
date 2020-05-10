@@ -1,54 +1,54 @@
-import UploadIcon from 'assets/icons/Upload'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
-import 'firebase/storage'
-import { generateID } from 'lib/helpers'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { State, withStatechart } from 'react-automata'
-import Dropzone from 'react-dropzone'
-import Transition from 'react-transition-group/Transition'
-import * as styles from './styles'
+import UploadIcon from "assets/icons/Upload"
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/database"
+import "firebase/storage"
+import { generateID } from "lib/helpers"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { State, withStatechart } from "react-automata"
+import Dropzone from "react-dropzone"
+import Transition from "react-transition-group/Transition"
+import * as styles from "./styles"
 
 const duration = 200
 
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
-  pointerEvents: 'none',
+  pointerEvents: "none",
   opacity: 0,
 }
 
 const transitionStyles = {
   entering: { opacity: 0 },
-  entered: { opacity: 1, pointerEvents: 'auto' },
+  entered: { opacity: 1, pointerEvents: "auto" },
 }
 
 export const statechart = {
-  initial: 'closed',
+  initial: "closed",
   states: {
     closed: {
-      onEntry: ['clearData'],
+      onEntry: ["clearData"],
       on: {
-        TOGGLE: 'open',
+        TOGGLE: "open",
       },
     },
     open: {
       on: {
-        TOGGLE: 'closed',
-        SUBMIT: 'loading',
+        TOGGLE: "closed",
+        SUBMIT: "loading",
       },
     },
     loading: {
-      onEntry: ['upload'],
+      onEntry: ["upload"],
       on: {
-        SUCCESS: 'closed',
-        FAIL: 'error',
+        SUCCESS: "closed",
+        FAIL: "error",
       },
     },
     error: {
       on: {
-        TRY_AGAIN: 'loading',
+        TRY_AGAIN: "loading",
       },
     },
   },
@@ -57,7 +57,7 @@ export const statechart = {
 export class UploadComponent extends Component {
   state = {
     files: [],
-    caption: '',
+    caption: "",
   }
 
   onDrop = (files) => {
@@ -69,7 +69,7 @@ export class UploadComponent extends Component {
   clearData = () => {
     this.setState({
       files: [],
-      caption: '',
+      caption: "",
     })
   }
 
@@ -93,25 +93,25 @@ export class UploadComponent extends Component {
     storage
       .put(file)
       .then(() =>
-        firebase.database().ref('/posts').push({
+        firebase.database().ref("/posts").push({
           caption,
           date: new Date().toISOString(),
           email: user.email,
-          hearts: '',
+          hearts: "",
           name: file.name,
           postId,
           uid: user.uid,
           username: user.displayName,
         }),
       )
-      .then(() => this.props.transition('SUCCESS'))
+      .then(() => this.props.transition("SUCCESS"))
   }
 
   button = () => (
     <button
       className={`${styles.button} flex flex-row items-center fw7 ttu f7 ph3 pv2 br2 mr3`}
       type="button"
-      onClick={() => this.props.transition('SUBMIT')}
+      onClick={() => this.props.transition("SUBMIT")}
     >
       Post
     </button>
@@ -180,7 +180,7 @@ export class UploadComponent extends Component {
             />
           </div>
           <button
-            onClick={() => this.props.transition('TOGGLE')}
+            onClick={() => this.props.transition("TOGGLE")}
             type="button"
             className={`${styles.closeBtn} fixed top-1 right-1 white f1 fw1`}
           >
@@ -197,14 +197,14 @@ export class UploadComponent extends Component {
         <button
           type="button"
           className={`${styles.button} flex flex-row items-center fw7 ttu f7 ph3 pv2 br2 mr3`}
-          onClick={() => this.props.transition('TOGGLE')}
+          onClick={() => this.props.transition("TOGGLE")}
         >
           <UploadIcon cssClass="mr2 icon-l" color="#fff" />
           Upload
         </button>
 
         <State
-          value={['open', 'loading']}
+          value={["open", "loading"]}
           render={(visible) => this.modal(visible)}
         />
       </div>

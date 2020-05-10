@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from "prop-types"
+import React from "react"
 
 const CameraIcon = (props) => {
-  const color = props.color ? props.color : '#000'
-  const cssClass = props.cssClass ? props.cssClass : ''
+  const color = props.color ? props.color : "#000"
+  const cssClass = props.cssClass ? props.cssClass : ""
 
   return (
     <svg

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import { styledInput, styles } from './styles'
+import PropTypes from "prop-types"
+import React from "react"
+import { styledInput, styles } from "./styles"
 
 const Input = (props) => {
   const {
@@ -16,7 +16,7 @@ const Input = (props) => {
   } = props
 
   switch (type) {
-    case 'textarea':
+    case "textarea":
       return (
         <textarea
           id={name}
@@ -33,7 +33,7 @@ const Input = (props) => {
     default:
       return (
         <input
-          type={type || 'text'}
+          type={type || "text"}
           id={name}
           name={name}
           className={`${styles} ${styledInput}`}

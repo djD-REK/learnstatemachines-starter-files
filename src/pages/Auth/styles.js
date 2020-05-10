@@ -1,5 +1,5 @@
-import amsterdam from 'assets/images/bg.jpg'
-import { css } from 'emotion'
+import amsterdam from "assets/images/bg.jpg"
+import { css } from "emotion"
 
 export const container = css`
   background-color: #fafafa;
@@ -23,7 +23,7 @@ export const title = css`
 
     &:after {
       background-color: #314654;
-      content: '';
+      content: "";
       display: block;
       height: 4px;
       margin-top: 15px;

@@ -1,7 +1,7 @@
-import firebase from 'firebase/app'
-import 'firebase/storage'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import firebase from "firebase/app"
+import "firebase/storage"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
 
 class PhotoCard extends Component {
   state = {
@@ -25,7 +25,7 @@ class PhotoCard extends Component {
         type="button"
         className="pa0 bw0 lh0"
         onClick={() =>
-          this.props.transition('SELECT_PHOTO', {
+          this.props.transition("SELECT_PHOTO", {
             photo: { url, ...this.props },
           })
         }

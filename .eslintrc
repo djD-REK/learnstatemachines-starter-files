@@ -12,7 +12,9 @@
     "implicit-arrow-linebreak": 0,
     "no-confusing-arrow": 0,
     "import/prefer-default-export": 0,
-    "semi": "off"
+    "semi": "off",
+    "quotes": "off",
+    "operator-linebreak": "off"
   },
   "globals": {
     "document": false,

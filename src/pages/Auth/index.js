@@ -1,11 +1,11 @@
-import Logo from 'assets/icons/Logo'
-import Forgot from 'components/Forgot'
-import Login from 'components/Login'
-import Register from 'components/Register'
-import { Consumer } from 'lib/context'
-import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
-import { background, container } from './styles'
+import Logo from "assets/icons/Logo"
+import Forgot from "components/Forgot"
+import Login from "components/Login"
+import Register from "components/Register"
+import { Consumer } from "lib/context"
+import React from "react"
+import { Redirect, Route, Switch } from "react-router-dom"
+import { background, container } from "./styles"
 
 const Auth = () => (
   <Consumer>

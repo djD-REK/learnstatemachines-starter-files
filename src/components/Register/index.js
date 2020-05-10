@@ -1,56 +1,56 @@
-import AuthToggle from 'components/AuthToggle'
-import Input from 'components/Input'
-import firebase from 'firebase/app'
-import 'firebase/auth/dist/index.cjs'
-import { history } from 'lib/history'
-import { button, title } from 'pages/Auth/styles'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { withStatechart } from 'react-automata'
-import * as styles from './styles'
+import AuthToggle from "components/AuthToggle"
+import Input from "components/Input"
+import firebase from "firebase/app"
+import "firebase/auth/dist/index.cjs"
+import { history } from "lib/history"
+import { button, title } from "pages/Auth/styles"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { withStatechart } from "react-automata"
+import * as styles from "./styles"
 
 export const statechart = {
-  initial: 'form',
+  initial: "form",
   states: {
     form: {
       on: {
-        TOGGLE_LOGIN: 'login',
-        TOGGLE_FORGOT: 'forgot',
+        TOGGLE_LOGIN: "login",
+        TOGGLE_FORGOT: "forgot",
         SUBMIT: {
           loading: [
             {
-              target: 'loading',
+              target: "loading",
               cond: ({ state }) =>
-                Object.values(state).filter((v) => v === '').length === 0,
+                Object.values(state).filter((v) => v === "").length === 0,
             },
-            { target: 'error' },
+            { target: "error" },
           ],
         },
       },
     },
     login: {
-      onEntry: ['toggleLogin'],
+      onEntry: ["toggleLogin"],
     },
     forgot: {
-      onEntry: ['toggleForgot'],
+      onEntry: ["toggleForgot"],
     },
     loading: {
-      onEntry: ['register'],
+      onEntry: ["register"],
       on: {
-        SUCCESS: 'authenticated',
-        FAIL: 'error',
+        SUCCESS: "authenticated",
+        FAIL: "error",
       },
     },
     authenticated: {
-      onEntry: ['authenticate'],
+      onEntry: ["authenticate"],
     },
     error: {
-      onEntry: ['enterError'],
+      onEntry: ["enterError"],
       on: {
         SUBMIT: {
           loading: {
             cond: ({ state }) =>
-              Object.values(state).filter((v) => v === '').length === 0,
+              Object.values(state).filter((v) => v === "").length === 0,
           },
         },
       },
@@ -60,17 +60,17 @@ export const statechart = {
 
 export class RegisterComponent extends Component {
   state = {
-    displayName: '',
-    email: '',
-    password: '',
+    displayName: "",
+    email: "",
+    password: "",
   }
 
-  toggleLogin = () => history.push('/login')
+  toggleLogin = () => history.push("/login")
 
-  toggleForgot = () => history.push('/forgot')
+  toggleForgot = () => history.push("/forgot")
 
   enterError = () =>
-    this.setState({ error: 'You must fill out all the fields.' })
+    this.setState({ error: "You must fill out all the fields." })
 
   handleChange = (event) => {
     const { name } = event.target
@@ -87,8 +87,8 @@ export class RegisterComponent extends Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((data) => data.user.updateProfile({ displayName }))
-      .then(() => this.props.transition('SUCCESS'))
-      .catch((error) => this.props.transition('FAIL', error))
+      .then(() => this.props.transition("SUCCESS"))
+      .catch((error) => this.props.transition("FAIL", error))
   }
 
   render() {
@@ -142,7 +142,7 @@ export class RegisterComponent extends Component {
           <div className="flex justify-between items-center">
             <button
               onClick={() =>
-                this.props.transition('SUBMIT', { state: this.state })
+                this.props.transition("SUBMIT", { state: this.state })
               }
               className={`${button} ph3 pv2 white bn`}
               type="submit"

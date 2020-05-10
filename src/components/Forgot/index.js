@@ -1,43 +1,43 @@
-import AuthToggle from 'components/AuthToggle'
-import Input from 'components/Input'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import { history } from 'lib/history'
-import { button, title } from 'pages/Auth/styles'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { withStatechart } from 'react-automata'
+import AuthToggle from "components/AuthToggle"
+import Input from "components/Input"
+import firebase from "firebase/app"
+import "firebase/auth"
+import { history } from "lib/history"
+import { button, title } from "pages/Auth/styles"
+import PropTypes from "prop-types"
+import React, { Component } from "react"
+import { withStatechart } from "react-automata"
 
 export const statechart = {
-  initial: 'form',
+  initial: "form",
   states: {
     form: {
       on: {
-        TOGGLE_LOGIN: 'login',
-        TOGGLE_REGISTER: 'register',
-        SUBMIT: 'loading',
+        TOGGLE_LOGIN: "login",
+        TOGGLE_REGISTER: "register",
+        SUBMIT: "loading",
       },
     },
     register: {
-      onEntry: ['toggleRegister'],
+      onEntry: ["toggleRegister"],
     },
     login: {
-      onEntry: ['toggleLogin'],
+      onEntry: ["toggleLogin"],
     },
     loading: {
-      onEntry: ['sendReset'],
+      onEntry: ["sendReset"],
       on: {
-        SUCCESS: 'resetSent',
-        FAIL: 'error',
+        SUCCESS: "resetSent",
+        FAIL: "error",
       },
     },
     resetSent: {
-      onEntry: ['toggleLogin'],
+      onEntry: ["toggleLogin"],
     },
     error: {
-      onEntry: ['enterError'],
+      onEntry: ["enterError"],
       on: {
-        TRY_AGAIN: 'loading',
+        TRY_AGAIN: "loading",
       },
     },
   },
@@ -45,12 +45,12 @@ export const statechart = {
 
 export class ForgotComponent extends Component {
   state = {
-    email: '',
+    email: "",
   }
 
-  toggleRegister = () => history.push('/register')
+  toggleRegister = () => history.push("/register")
 
-  toggleLogin = () => history.push('/login')
+  toggleLogin = () => history.push("/login")
 
   handleChange = (e) =>
     this.setState({
@@ -61,7 +61,7 @@ export class ForgotComponent extends Component {
     firebase
       .auth()
       .sendPasswordResetEmail(this.state.email)
-      .then(() => this.props.transition('SUCCESS'))
+      .then(() => this.props.transition("SUCCESS"))
 
   render() {
     const { email } = this.state
@@ -87,7 +87,7 @@ export class ForgotComponent extends Component {
           </div>
           <div className="flex justify-between items-center">
             <button
-              onClick={() => this.props.transition('SUBMIT')}
+              onClick={() => this.props.transition("SUBMIT")}
               className={`${button} ph3 pv2 white bn`}
               type="submit"
             >
