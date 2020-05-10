@@ -1,12 +1,12 @@
-import AuthToggle from 'components/AuthToggle';
-import Input from 'components/Input';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import { history } from 'lib/history';
-import { button, title } from 'pages/Auth/styles';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { withStatechart } from 'react-automata';
+import AuthToggle from 'components/AuthToggle'
+import Input from 'components/Input'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import { history } from 'lib/history'
+import { button, title } from 'pages/Auth/styles'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { withStatechart } from 'react-automata'
 
 export const statechart = {
   initial: 'form',
@@ -41,35 +41,35 @@ export const statechart = {
       },
     },
   },
-};
+}
 
 export class ForgotComponent extends Component {
   state = {
     email: '',
-  };
+  }
 
-  toggleRegister = () => history.push('/register');
+  toggleRegister = () => history.push('/register')
 
-  toggleLogin = () => history.push('/login');
+  toggleLogin = () => history.push('/login')
 
-  handleChange = e =>
+  handleChange = (e) =>
     this.setState({
       [e.target.name]: e.target.value,
-    });
+    })
 
   sendReset = () =>
     firebase
       .auth()
       .sendPasswordResetEmail(this.state.email)
-      .then(() => this.props.transition('SUCCESS'));
+      .then(() => this.props.transition('SUCCESS'))
 
   render() {
-    const { email } = this.state;
+    const { email } = this.state
 
     return (
       <form
         className="flex items-center flex-column justify-center w-100"
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         <div className={`${title} w-60 mb4`}>
           <h1>Reset Password</h1>
@@ -98,12 +98,12 @@ export class ForgotComponent extends Component {
           </div>
         </div>
       </form>
-    );
+    )
   }
 }
 
 ForgotComponent.propTypes = {
   transition: PropTypes.func.isRequired,
-};
+}
 
-export default withStatechart(statechart)(ForgotComponent);
+export default withStatechart(statechart)(ForgotComponent)

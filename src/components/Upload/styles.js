@@ -1,8 +1,8 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export const background = css`
-  background-color: #398DF0;
-`;
+  background-color: #398df0;
+`
 
 export const dropzone = css`
   border-color: rgb(102, 102, 102);
@@ -17,14 +17,14 @@ export const dropzone = css`
   &:hover,
   &:active,
   &:focus {
-    border-color: #00CE95;
+    border-color: #00ce95;
   }
-`;
+`
 
 export const dropzoneActive = css`
   background-color: rgba(0, 206, 149, 0.125);
-  border: 2px solid #00CE95;
-`;
+  border: 2px solid #00ce95;
+`
 
 export const button = css`
   background-color: #50bb94;
@@ -38,7 +38,7 @@ export const button = css`
     background-color: #149668;
     color: #fff;
   }
-`;
+`
 
 export const closeBtn = css`
   background: transparent;
@@ -53,4 +53,4 @@ export const closeBtn = css`
     color: #fff;
     opacity: 0.8;
   }
-`;
+`

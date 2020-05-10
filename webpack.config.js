@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+const webpack = require('webpack')
 
 module.exports = {
   entry: ['react-hot-loader/patch', './src/index.js'],
@@ -35,4 +35,4 @@ module.exports = {
       index: 'index.html',
     },
   },
-};
+}

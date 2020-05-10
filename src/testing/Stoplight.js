@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { State, withStatechart } from 'react-automata';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { State, withStatechart } from 'react-automata'
 
 export const statechart = {
   initial: 'red',
@@ -21,12 +21,12 @@ export const statechart = {
       },
     },
   },
-};
+}
 
 export class StoplightComponent extends React.Component {
   handleClick = () => {
-    this.props.transition('TIMER');
-  };
+    this.props.transition('TIMER')
+  }
 
   render() {
     return (
@@ -39,12 +39,12 @@ export class StoplightComponent extends React.Component {
           Next Light
         </button>
       </div>
-    );
+    )
   }
 }
 
 StoplightComponent.propTypes = {
   transition: PropTypes.func,
-};
+}
 
-export default withStatechart(statechart)(StoplightComponent);
+export default withStatechart(statechart)(StoplightComponent)

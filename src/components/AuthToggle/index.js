@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import linkToggle from './styles';
+import PropTypes from 'prop-types'
+import React from 'react'
+import linkToggle from './styles'
 
-const AuthToggle = props => (
+const AuthToggle = (props) => (
   <div>
     <div className={linkToggle}>
       {props.state !== 'login' ? (
@@ -14,7 +14,10 @@ const AuthToggle = props => (
       )}
 
       {props.state !== 'register' ? (
-        <button type="button" onClick={() => props.transition('TOGGLE_REGISTER')}>
+        <button
+          type="button"
+          onClick={() => props.transition('TOGGLE_REGISTER')}
+        >
           Register
         </button>
       ) : (
@@ -30,11 +33,11 @@ const AuthToggle = props => (
       )}
     </div>
   </div>
-);
+)
 
 AuthToggle.propTypes = {
   state: PropTypes.string.isRequired,
   transition: PropTypes.func.isRequired,
-};
+}
 
-export default AuthToggle;
+export default AuthToggle

@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export const styles = css`
   background-color: #fff;
@@ -20,8 +20,8 @@ export const styles = css`
       0 0 8px rgba(102, 175, 233, 0.6);
     outline: 0;
   }
-`;
+`
 
 export const styledInput = css`
   height: 50px;
-`;
+`

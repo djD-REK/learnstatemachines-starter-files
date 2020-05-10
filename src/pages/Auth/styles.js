@@ -1,11 +1,11 @@
-import amsterdam from 'assets/images/bg.jpg';
-import { css } from 'emotion';
+import amsterdam from 'assets/images/bg.jpg'
+import { css } from 'emotion'
 
 export const container = css`
   background-color: #fafafa;
   height: 100vh;
   overflow: hidden;
-`;
+`
 
 export const background = css`
   background-image: url(${amsterdam});
@@ -13,7 +13,7 @@ export const background = css`
   background-position: center;
   background-color: #777;
   background-blend-mode: multiply;
-`;
+`
 
 export const title = css`
   color: #314654;
@@ -23,14 +23,14 @@ export const title = css`
 
     &:after {
       background-color: #314654;
-      content: "";
+      content: '';
       display: block;
       height: 4px;
       margin-top: 15px;
       width: 50px;
     }
   }
-`;
+`
 
 export const button = css`
   background-color: #50bb94;
@@ -48,9 +48,9 @@ export const button = css`
     background-color: #149668;
     color: #fff;
   }
-`;
+`
 
 export const disabled = css`
   opacity: 0.7;
   pointer-events: none;
-`;
+`

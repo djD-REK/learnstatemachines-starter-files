@@ -1,11 +1,11 @@
-import PhotoCard from 'components/PhotoCard';
-import PhotoModal from 'components/PhotoModal';
-import firebase from 'firebase/app';
-import 'firebase/database';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { State, withStatechart } from 'react-automata';
-import * as styles from './styles';
+import PhotoCard from 'components/PhotoCard'
+import PhotoModal from 'components/PhotoModal'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { State, withStatechart } from 'react-automata'
+import * as styles from './styles'
 
 export const statechart = {
   initial: 'loading',
@@ -27,7 +27,7 @@ export const statechart = {
       },
     },
   },
-};
+}
 
 export class ProfileComponent extends Component {
   fetch = () => {
@@ -36,38 +36,35 @@ export class ProfileComponent extends Component {
       .ref('/posts')
       .orderByChild('username')
       .equalTo(this.props.match.params.username)
-      .on('value', snapshot =>
-        this.props.transition('SUCCESS', { posts: snapshot.val() }));
-  };
+      .on('value', (snapshot) =>
+        this.props.transition('SUCCESS', { posts: snapshot.val() }),
+      )
+  }
 
   render() {
-    const { posts } = this.props;
+    const { posts } = this.props
     const cards = posts
-      ? Object.keys(posts).map(key => (
-        <PhotoCard
-          key={key}
-          id={key}
-          {...posts[key]}
-          transition={this.props.transition}
-        />
-      ))
-      : false;
+      ? Object.keys(posts).map((key) => (
+          <PhotoCard
+            key={key}
+            id={key}
+            {...posts[key]}
+            transition={this.props.transition}
+          />
+        ))
+      : false
 
     return (
       <div>
         <div className={`${styles.container} mw8 w-90 center pb6`}>{cards}</div>
         <State
           value="photo"
-          render={visible =>
-            visible ? (
-              <PhotoModal
-                {...this.props.photo}
-              />
-            ) : null
+          render={(visible) =>
+            visible ? <PhotoModal {...this.props.photo} /> : null
           }
         />
       </div>
-    );
+    )
   }
 }
 
@@ -85,6 +82,6 @@ ProfileComponent.propTypes = {
     PropTypes.objectOf(PropTypes.bool),
     PropTypes.string,
   ]),
-};
+}
 
-export default withStatechart(statechart)(ProfileComponent);
+export default withStatechart(statechart)(ProfileComponent)

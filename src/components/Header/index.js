@@ -1,13 +1,13 @@
-import Arrow from 'assets/icons/Arrow';
-import Logo from 'assets/icons/Logo';
-import Upload from 'components/Upload';
-import { Consumer } from 'lib/context';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { State, withStatechart } from 'react-automata';
-import Gravatar from 'react-gravatar';
-import { Link } from 'react-router-dom';
-import * as styles from './styles';
+import Arrow from 'assets/icons/Arrow'
+import Logo from 'assets/icons/Logo'
+import Upload from 'components/Upload'
+import { Consumer } from 'lib/context'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { State, withStatechart } from 'react-automata'
+import Gravatar from 'react-gravatar'
+import { Link } from 'react-router-dom'
+import * as styles from './styles'
 
 export const statechart = {
   initial: 'closed',
@@ -24,28 +24,28 @@ export const statechart = {
       },
     },
   },
-};
+}
 
 export class HeaderComponent extends Component {
   componentDidMount = () => {
-    document.addEventListener('click', this.handleClickOutside);
-  };
+    document.addEventListener('click', this.handleClickOutside)
+  }
 
   componentWillUnmount = () => {
-    document.removeEventListener('click', this.handleClickOutside);
-  };
+    document.removeEventListener('click', this.handleClickOutside)
+  }
 
-  setWrapperRef = node => {
-    this.wrapperRef = node;
-  };
+  setWrapperRef = (node) => {
+    this.wrapperRef = node
+  }
 
-  handleClickOutside = event => {
+  handleClickOutside = (event) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.props.transition('CLOSE_MENU');
+      this.props.transition('CLOSE_MENU')
     }
-  };
+  }
 
-  closeMenu = () => this.props.transition('CLOSE_MENU');
+  closeMenu = () => this.props.transition('CLOSE_MENU')
 
   renderSubmenu = (user, logout) => (
     <ul className={styles.subMenu}>
@@ -60,7 +60,7 @@ export class HeaderComponent extends Component {
       </li>
       <li>
         <button
-          onClick={e => logout(e)}
+          onClick={(e) => logout(e)}
           type="button"
           className="fw5 tr f6 c-mid-gray ph3 pv2 no-underline bw0"
         >
@@ -68,12 +68,12 @@ export class HeaderComponent extends Component {
         </button>
       </li>
     </ul>
-  );
+  )
 
   render() {
     const menuState = this.props.machineState
       ? this.props.machineState.value
-      : 'closed';
+      : 'closed'
 
     return (
       <Consumer>
@@ -108,7 +108,7 @@ export class HeaderComponent extends Component {
 
                   <State
                     value="open"
-                    render={visible =>
+                    render={(visible) =>
                       visible ? this.renderSubmenu(user, logout) : false
                     }
                   />
@@ -118,7 +118,7 @@ export class HeaderComponent extends Component {
           </header>
         )}
       </Consumer>
-    );
+    )
   }
 }
 
@@ -127,6 +127,6 @@ HeaderComponent.propTypes = {
   machineState: PropTypes.shape({
     value: PropTypes.string,
   }),
-};
+}
 
-export default withStatechart(statechart)(HeaderComponent);
+export default withStatechart(statechart)(HeaderComponent)

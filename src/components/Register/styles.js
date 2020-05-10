@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export const alert = css`
   background-color: #f8d7da;
@@ -8,4 +8,4 @@ export const alert = css`
   margin-bottom: 1rem;
   padding: 0.75rem 1.25rem;
   position: relative;
-`;
+`

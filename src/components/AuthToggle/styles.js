@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export default css`
   button {
@@ -14,4 +14,4 @@ export default css`
       color: #50bb94;
     }
   }
-`;
+`

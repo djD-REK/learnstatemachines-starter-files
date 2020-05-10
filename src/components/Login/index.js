@@ -1,12 +1,12 @@
-import AuthToggle from 'components/AuthToggle';
-import Input from 'components/Input';
-import firebase from 'firebase/app';
-import 'firebase/auth/dist/index.cjs';
-import { history } from 'lib/history';
-import { button, title } from 'pages/Auth/styles';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { withStatechart } from 'react-automata';
+import AuthToggle from 'components/AuthToggle'
+import Input from 'components/Input'
+import firebase from 'firebase/app'
+import 'firebase/auth/dist/index.cjs'
+import { history } from 'lib/history'
+import { button, title } from 'pages/Auth/styles'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { withStatechart } from 'react-automata'
 
 export const statechart = {
   initial: 'form',
@@ -41,41 +41,41 @@ export const statechart = {
       },
     },
   },
-};
+}
 
 export class LoginComponent extends Component {
   state = {
     email: '',
     password: '',
-  };
+  }
 
-  toggleRegister = () => history.push('/register');
+  toggleRegister = () => history.push('/register')
 
-  toggleForgot = () => history.push('/forgot');
+  toggleForgot = () => history.push('/forgot')
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   login = () => {
-    const { email, password } = this.state;
+    const { email, password } = this.state
 
     return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => this.props.transition('SUCCESS'))
-      .catch(() => this.props.transition('FAIL'));
-  };
+      .catch(() => this.props.transition('FAIL'))
+  }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password } = this.state
 
     return (
       <form
         className="flex items-center flex-column justify-center w-100 mb5"
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         <div className={`${title} w-60 mb4`}>
           <h1>Welcome Back</h1>
@@ -115,12 +115,12 @@ export class LoginComponent extends Component {
           </div>
         </div>
       </form>
-    );
+    )
   }
 }
 
 LoginComponent.propTypes = {
   transition: PropTypes.func.isRequired,
-};
+}
 
-export default withStatechart(statechart)(LoginComponent);
+export default withStatechart(statechart)(LoginComponent)

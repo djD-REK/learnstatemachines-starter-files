@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { styledInput, styles } from './styles';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { styledInput, styles } from './styles'
 
-const Input = props => {
+const Input = (props) => {
   const {
     autoComplete,
     children,
@@ -13,7 +13,7 @@ const Input = props => {
     placeholder,
     type,
     value,
-  } = props;
+  } = props
 
   switch (type) {
     case 'textarea':
@@ -29,7 +29,7 @@ const Input = props => {
         >
           {children}
         </textarea>
-      );
+      )
     default:
       return (
         <input
@@ -44,9 +44,9 @@ const Input = props => {
           onFocus={onFocus}
           onBlur={onBlur}
         />
-      );
+      )
   }
-};
+}
 
 Input.propTypes = {
   children: PropTypes.node,
@@ -58,6 +58,6 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
-};
+}
 
-export default Input;
+export default Input

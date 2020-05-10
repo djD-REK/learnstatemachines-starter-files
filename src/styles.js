@@ -1,8 +1,8 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export const body = css`
   padding-top: 100px;
-`;
+`
 
 export default `
   * {
@@ -74,4 +74,4 @@ export default `
   .c-mid-gray {
     color: #b3b3b3;
   }
-`;
+`

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-const CameraIcon = props => {
-  const color = props.color ? props.color : '#000';
-  const cssClass = props.cssClass ? props.cssClass : '';
+const CameraIcon = (props) => {
+  const color = props.color ? props.color : '#000'
+  const cssClass = props.cssClass ? props.cssClass : ''
 
   return (
     <svg
@@ -16,12 +16,12 @@ const CameraIcon = props => {
         <path d="M8 4.001A4 4 0 0 0 4 8v.002a.5.5 0 0 0 1 0V8a3 3 0 0 1 3-2.999.5.5 0 0 0 0-1z" />
       </g>
     </svg>
-  );
-};
+  )
+}
 
 CameraIcon.propTypes = {
   color: PropTypes.string,
   cssClass: PropTypes.string,
-};
+}
 
-export default CameraIcon;
+export default CameraIcon

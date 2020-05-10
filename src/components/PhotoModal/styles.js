@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from 'emotion'
 
 export const closeBtn = css`
   background: transparent;
@@ -13,4 +13,4 @@ export const closeBtn = css`
     color: #fff;
     opacity: 0.8;
   }
-`;
+`
